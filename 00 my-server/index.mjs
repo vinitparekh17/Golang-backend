@@ -15,6 +15,8 @@ app.post('/post', (req, res) => {
 
 app.post('/postform', (req, res) => {
     res.status(200).json(JSON.stringify(req.body));
+    console.log(JSON.stringify(req.body));
+    
 })
 
 app.listen(PORT, () => console.log("http://localhost:" + PORT));
