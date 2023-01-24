@@ -14,7 +14,7 @@ func main() {
 
 	// now doing the same thing using goroutines which is used to run multiple functions at the same time (lightweight threads)
 	r := mux.NewRouter()
-	r.HandleFunc("/", serveHome)
+	r.HandleFunc("/", serveHome).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", r))
 	fmt.Println("Server is running on port 8080")
 }

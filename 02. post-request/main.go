@@ -4,21 +4,20 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 	"strings"
 )
 
 func main() {
-	// doPostRequest("http://localhost:8080/post")
-	doPostFormRequest("http://localhost:8080/postform")
+	doPostRequest("http://localhost:8080/add")
+	// doPostFormRequest("http://localhost:8080/postform")
 }
 
 func doPostRequest(url string) {
 	reqData := strings.NewReader(`
 	{
-		"coursename": "Go",
-		"price": 100,
-		"author": "Vinit"
+		"full_Name": "Vinit Parekh",
+		"email": "vinit@example.com",
+		"password": "Vinit1221"
 	}`)
 
 	res, err := http.Post(url, "application/json", reqData)
@@ -35,16 +34,16 @@ func fetal(err error) {
 	}
 }
 
-func doPostFormRequest(link string) {
-	data := url.Values{}
-	data.Set("coursename", "Go")
-	data.Set("price", "100")
-	data.Set("author", "Vinit")
+// func doPostFormRequest(link string) {
+// 	data := url.Values{}
+// 	data.Set("coursename", "Go")
+// 	data.Set("price", "100")
+// 	data.Set("author", "Vinit")
 
-	res, err := http.PostForm(link, data)
-	fetal(err)
+// 	res, err := http.PostForm(link, data)
+// 	fetal(err)
 
-	defer res.Body.Close()
-	content, _ := ioutil.ReadAll(res.Body)
-	fmt.Println("Content:", string(append(content)))
-}
+// 	defer res.Body.Close()
+// 	content, _ := ioutil.ReadAll(res.Body)
+// 	fmt.Println("Content:", string(append(content)))
+// }
